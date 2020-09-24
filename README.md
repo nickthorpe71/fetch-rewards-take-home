@@ -20,12 +20,13 @@ Run the tests `npm test`
 
 Default: http://localhost:8000
 
-**GET** /email
-Takes a list of email address and returns an integer indicating the number of valid email addresses
+**GET /email**
+
+Takes a list of email address and returns an integer indicating the number of valid email addresses.
 
 ### Input
 
-Takes a JSON body with the key "emails" whose corrisponding value is an array of strings
+Takes a JSON body with the key "emails" whose corrisponding value is an array of strings.
 ```
 {
   "emails": [
@@ -40,7 +41,7 @@ Takes a JSON body with the key "emails" whose corrisponding value is an array of
 ```
 ### Output
 
-Returns a JSON object with the key "count" whose corrisponding value is an integer
+Returns a JSON object with the key "count" whose corrisponding value is an integer.
 ```
 {
   "count": 5
