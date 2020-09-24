@@ -9,6 +9,9 @@ Specifically: Gmail will ignore the placement of "." in the username. And it wil
 1. Clone this repository to your local machine
 2. `cd` into the cloned repository
 3. Install the node dependencies `npm install`
+4. Make sure you are running node version 12.17 or higher
+5. Open the project and run npm start
+6. You can then send requests to the displayed URL (http://localhost:8000/email) with Postman or the like
 
 ## Scripts
 
@@ -19,6 +22,10 @@ Run the tests `npm test`
 ## Service
 
 Default: http://localhost:8000
+
+## Test 
+
+To test the service with 
 
 **GET /email**
 
@@ -36,7 +43,8 @@ Takes a JSON body with the key "emails" whose corrisponding value is an array of
     "nickthorpe@gmail.com",
     "te.st+spam@gmail.com", 
     "test@gmail.com", 
-    "test@test.com"]
+    "test@test.com"
+  ]
 }
 ```
 ### Output
