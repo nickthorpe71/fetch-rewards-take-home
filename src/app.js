@@ -29,7 +29,8 @@ app.get('/email', jsonBodyParser, (req, res) => {
   let count = 0;
 
   for (let i = 0; i < emails.length; i++) {
-    // split string @ sign
+    // split string at last @
+    // this must be done first to be able to check for 'gmail' substring after the @
     const lastAt = emails[i].lastIndexOf('@');
     let first = emails[i].slice(0, lastAt);
     const last = emails[i].slice(lastAt, emails[i].length);
@@ -43,31 +44,24 @@ app.get('/email', jsonBodyParser, (req, res) => {
         let plus = first.indexOf('+');
         first = first.slice(0, plus);
       }
-
-      // rejoin first string to second sting
-      formattedEmails.push(first + last);
-    } else {
-      formattedEmails.push(emails[i]);
     }
-  }
+    // rejoin first string to second sting
+    let formattedEmail = first + last;
 
-  //CHeck jamies texts for more guidance
-
-  // remove duplicates
-  // regex to validate formatted emails
-
-  // TODO: could also make a react app to show front end skills and deploy this to heroku
-  // The UI for React could be a simple 1 page that allows them to enter in a emails one by one, compiling a list, and then send that list. They would then receive a response of the number of valid emails. 
-
-  for (let i = 0; i < emails.length; i++) {
-    if (validateEmail(emails[i]))
+    // check for duplicates and validate with regex
+    if (!formattedEmails.includes(formattedEmail) && validateEmail(formattedEmail)) {
+      formattedEmails.push(formattedEmail);
       count++;
+    }
   }
 
   return res
     .status(200)
     .send({ count });
 });
+
+// TODO: could also make a react app to show front end skills and deploy this to heroku
+// The UI for React could be a simple 1 page that allows them to enter in a emails one by one, compiling a list, and then send that list. They would then receive a response of the number of valid emails. 
 
 const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
