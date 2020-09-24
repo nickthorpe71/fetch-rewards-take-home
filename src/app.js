@@ -60,9 +60,6 @@ app.get('/email', jsonBodyParser, (req, res) => {
     .send({ count });
 });
 
-// TODO: could also make a react app to show front end skills and deploy this to heroku
-// The UI for React could be a simple 1 page that allows them to enter in a emails one by one, compiling a list, and then send that list. They would then receive a response of the number of valid emails. 
-
 const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
