@@ -13,3 +13,10 @@ This is a boilerplate project used for starting new projects!
 Start the application `npm start`
 
 Run the tests `npm test`
+
+## Service
+
+http://localhost:8000/email
+
+- a JSON body with the key "emails" whose corrisponding value is an array of strings
+
